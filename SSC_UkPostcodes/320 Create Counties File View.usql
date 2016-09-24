@@ -1,0 +1,10 @@
+﻿USE DATABASE UkPostcodes;
+USE SCHEMA Postcodes;
+
+DROP VIEW IF EXISTS CountiesFileView;
+
+CREATE VIEW IF NOT EXISTS CountiesFileView
+AS
+EXTRACT CountyCode string, CountyName string
+FROM "/ssc_uk_postcodes/counties/England_Counties.csv"
+USING Extractors.Csv();

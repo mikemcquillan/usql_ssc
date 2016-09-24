@@ -1,0 +1,6 @@
+﻿USE DATABASE UkPostcodes;
+USE SCHEMA Postcodes;
+
+DROP TYPE IF EXISTS PostcodeDetailTbl;
+
+CREATE TYPE IF NOT EXISTS PostcodeDetailTbl AS TABLE(Postcode string, Part1 string, Part2 string, CountyName string, DistrictName string);

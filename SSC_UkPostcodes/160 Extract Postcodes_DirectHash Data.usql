@@ -1,0 +1,7 @@
+﻿USE DATABASE UkPostcodes;
+USE SCHEMA Postcodes;
+
+@allPostcodes = SELECT Postcode, CountyCode, DistrictCode, CountryCode, Latitude, Longitude, DirectHashValue
+                  FROM Postcodes_DirectHash;
+                  OUTPUT @allPostcodes TO "/outputs/dhPostcodes.tsv" 
+                  ORDER BY Longitude ASC USING Outputters.Tsv();

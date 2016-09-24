@@ -1,0 +1,8 @@
+﻿USE DATABASE UkPostcodes;
+USE SCHEMA Postcodes;
+
+@pcodes = SELECT Postcode, Part1, Part2, CountyName, DistrictName FROM PostcodeDetailsTvf("Northamptonshire", "East Northamptonshire") AS postcodes;
+
+OUTPUT @pcodes
+TO "outputs/postcodestvf.csv"
+USING Outputters.Csv();

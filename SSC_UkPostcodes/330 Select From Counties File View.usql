@@ -1,0 +1,10 @@
+﻿USE DATABASE UkPostcodes;
+USE SCHEMA Postcodes;
+
+@counties =
+SELECT CountyCode, CountyName
+FROM CountiesFileView;
+
+OUTPUT @counties
+TO "/outputs/countiesviewresults.csv"
+USING Outputters.Csv();

@@ -1,0 +1,15 @@
+﻿USE DATABASE UkPostcodes;
+USE SCHEMA Postcodes;
+
+DROP VIEW IF EXISTS PostcodeDetailsView;
+
+CREATE VIEW IF NOT EXISTS PostcodeDetailsView
+AS
+SELECT p.Postcode, 
+p.Postcode.IndexOf(" ") == -1 ? p.Postcode : p.Postcode.Substring(0, p.Postcode.IndexOf(" ")) AS Part1,
+p.Postcode.IndexOf(" ") == -1 ? p.Postcode : p.Postcode.Substring(p.Postcode.IndexOf(" ") + 1) AS Part2,
+c.CountyName,
+d.DistrictName
+FROM Postcodes AS p
+LEFT JOIN Counties AS c ON p.CountyCode == c.CountyCode
+LEFT JOIN Districts AS d ON p.DistrictCode == d.DistrictCode;

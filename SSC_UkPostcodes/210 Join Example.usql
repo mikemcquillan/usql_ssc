@@ -1,0 +1,18 @@
+﻿USE DATABASE UkPostcodes;
+USE SCHEMA Postcodes;
+
+DECLARE @DataFilePath string = "/ssc_uk_postcodes/districts/England_Districts.csv";
+
+@districts =
+EXTRACT DistrictCode string, DistrictName string
+FROM @DataFilePath USING Extractors.Csv();
+
+@counties = SELECT CountyCode, CountyName FROM Counties;
+
+@pcodes = SELECT p.Postcode, d.DistrictName, c.CountyName
+FROM Postcodes AS p
+INNER JOIN @districts AS d ON p.DistrictCode == d.DistrictCode
+LEFT JOIN @counties AS c ON p.CountyCode == c.CountyCode;
+
+OUTPUT @pcodes TO "/outputs/joins.tsv"
+USING Outputters.Tsv();

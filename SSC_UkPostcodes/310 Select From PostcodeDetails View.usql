@@ -1,0 +1,8 @@
+﻿USE DATABASE UkPostcodes;
+USE SCHEMA Postcodes;
+
+@pd =
+SELECT p.Postcode, p.Part1, p.Part2, p.CountyName, p.DistrictName
+FROM PostcodeDetailsView AS p;
+         
+OUTPUT @pd TO "/outputs/pcodedetails.csv" USING Outputters.Csv();

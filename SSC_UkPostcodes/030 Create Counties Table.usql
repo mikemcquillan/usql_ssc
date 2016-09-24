@@ -1,0 +1,10 @@
+﻿USE DATABASE UkPostcodes;   // DATABASE keyword is optional
+USE SCHEMA Postcodes;       // SCHEMA keyword is required for schemas
+  
+CREATE TABLE IF NOT EXISTS Counties
+(
+CountyCode string,
+CountyName string,
+INDEX idx_Counties CLUSTERED (CountyCode)
+PARTITIONED BY HASH (CountyCode)
+);

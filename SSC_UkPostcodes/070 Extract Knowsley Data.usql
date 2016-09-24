@@ -1,0 +1,26 @@
+﻿USE DATABASE UkPostcodes;
+
+DECLARE @DataFilePath string = "/ssc_uk_postcodes/postcodes/postcodes.csv";
+
+@postcodes =
+EXTRACT Postcode string,
+CountyCode string,
+DistrictCode string,
+CountryCode string,
+Latitude decimal?,
+Longitude decimal?
+FROM @DataFilePath
+USING Extractors.Csv();
+
+@knowsleyPostcodes =
+SELECT Postcode,
+CountyCode,
+DistrictCode,
+CountryCode,
+Latitude,
+Longitude
+FROM @postcodes
+WHERE DistrictCode == "E08000011";
+OUTPUT @knowsleyPostcodes
+TO "/outputs/knowsleyPostcodes.tsv"
+USING Outputters.Tsv();

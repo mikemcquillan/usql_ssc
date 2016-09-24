@@ -1,0 +1,35 @@
+﻿USE DATABASE UkPostcodes;
+USE SCHEMA Postcodes;
+
+DECLARE @CountyFilePath string = "/ssc_uk_postcodes/counties/england_counties.csv";
+DECLARE @DistrictFilePath string = "/ssc_uk_postcodes/districts/england_districts.csv";
+DECLARE @PostcodeFilePath string = "/ssc_uk_postcodes/postcodes/postcodes.csv";
+
+INSERT INTO Counties (CountyCode, CountyName)
+SELECT CountyCode, CountyName
+FROM 
+(
+EXTRACT CountyCode string,
+CountyName string
+FROM @CountyFilePath
+USING Extractors.Csv()) AS counties;
+
+INSERT INTO Districts (DistrictCode, DistrictName)
+SELECT DistrictCode, DistrictName
+FROM 
+(
+EXTRACT DistrictCode string,
+DistrictName string
+FROM @DistrictFilePath
+USING Extractors.Csv()) AS districts;
+
+INSERT INTO Postcodes
+(Postcode, CountyCode, DistrictCode, CountryCode, Latitude, Longitude) 
+SELECT Postcode, 
+       CountyCode, 
+       DistrictCode, 
+       CountryCode, 
+       Latitude, 
+       Longitude 
+FROM (EXTRACT Postcode string, CountyCode string, DistrictCode string, CountryCode string, Latitude decimal?, Longitude decimal? 
+        FROM @PostcodeFilePath USING Extractors.Csv()) AS postcodes;

@@ -1,0 +1,13 @@
+﻿USE DATABASE UkPostcodes;
+USE SCHEMA Postcodes;
+  
+CREATE TABLE IF NOT EXISTS PostcodeEstimates
+(
+Postcode string,
+Total int?,
+Males int?,
+Females int?,
+OccupiedHouseholds int?,
+INDEX idx_PostcodeEstimates CLUSTERED (Postcode)
+PARTITIONED BY HASH (Postcode)
+);

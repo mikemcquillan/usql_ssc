@@ -1,0 +1,17 @@
+﻿USE DATABASE UkPostcodes;
+USE SCHEMA Postcodes;
+
+@rangePostcodes =
+  SELECT Postcode,
+  CountyCode,
+  DistrictCode,
+  CountryCode,
+  Latitude,
+  Longitude
+  FROM Postcodes_Range
+  WHERE CountyCode == "E10000017"
+  AND Latitude BETWEEN (decimal)53.55 AND (decimal)53.56
+  AND Longitude BETWEEN (decimal)-2.905 AND (decimal)-2.900;
+  OUTPUT @rangePostcodes
+  TO "/outputs/rangePostcodes.tsv"
+  USING Outputters.Tsv();

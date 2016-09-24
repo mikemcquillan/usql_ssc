@@ -1,0 +1,20 @@
+﻿USE DATABASE UkPostcodes;
+  USE SCHEMA Postcodes;
+
+  DECLARE @DataFilePath string = "/ssc_uk_postcodes/postcodes/postcodes.csv";
+
+  INSERT INTO Postcodes_Range 
+  ( Postcode, 
+    CountyCode, 
+    DistrictCode, 
+    CountryCode, 
+    Latitude, 
+    Longitude 
+  ) 
+  SELECT Postcode, 
+         CountyCode, 
+         DistrictCode, 
+         CountryCode, 
+         Latitude, 
+         Longitude 
+  FROM (EXTRACT Postcode string, CountyCode string, DistrictCode string, CountryCode string, Latitude decimal?, Longitude decimal? FROM @DataFilePath USING Extractors.Csv()) AS PcodeData;

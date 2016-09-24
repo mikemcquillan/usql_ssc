@@ -1,0 +1,16 @@
+﻿USE DATABASE UkPostcodes;
+  USE SCHEMA Postcodes;
+  
+  @knowsleyPostcodes =
+  SELECT Postcode,
+  CountyCode,
+  DistrictCode,
+  CountryCode,
+  Latitude,
+  Longitude
+  FROM Postcodes_DistrictCode
+  WHERE DistrictCode == "E08000011"; // Knowsley district code
+  
+  OUTPUT @knowsleyPostcodes
+  TO "/outputs/knowsleyPostcodes.tsv"
+  USING Outputters.Tsv();

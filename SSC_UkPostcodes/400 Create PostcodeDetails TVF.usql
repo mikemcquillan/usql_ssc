@@ -1,0 +1,27 @@
+﻿USE DATABASE UkPostcodes;
+USE SCHEMA Postcodes;
+
+DROP FUNCTION IF EXISTS PostcodeDetailsTvf;
+
+CREATE FUNCTION IF NOT EXISTS PostcodeDetailsTvf(@CountyName string = "NotSpecified", @DistrictName string)
+RETURNS @result PostcodeDetailTbl
+AS
+BEGIN
+
+@records = SELECT p.Postcode,
+           p.Postcode.IndexOf(" ") == -1 ? p.Postcode : p.Postcode.Substring(0, p.Postcode.IndexOf(" ")) AS Part1,
+            p.Postcode.IndexOf(" ") == -1 ? p.Postcode : p.Postcode.Substring(p.Postcode.IndexOf(" ") + 1) AS Part2,
+           c.CountyName,
+           d.DistrictName
+    FROM Postcodes AS p
+         LEFT JOIN
+             Counties AS c
+         ON p.CountyCode == c.CountyCode
+         LEFT JOIN Districts AS d ON p.DistrictCode == d.DistrictCode
+    WHERE (c.CountyName == @CountyName OR @CountyName == "NotSpecified") AND d.DistrictName == @DistrictName;
+
+@result = 
+SELECT Postcode, Part1, Part2, CountyName, DistrictName
+FROM @records;
+
+END;

@@ -1,0 +1,15 @@
+﻿USE DATABASE UkPostcodes;
+  USE SCHEMA Postcodes;
+  
+  @lancsPostcodes =
+  SELECT Postcode,
+  DistrictCode,
+  CountryCode,
+  Latitude,
+  Longitude
+  FROM Postcodes_VerticalPartitioning
+  WHERE CountyCode == "E10000017";
+  
+  OUTPUT @lancsPostcodes
+  TO "/outputs/lancsPostcodes.tsv"
+  USING Outputters.Tsv();
