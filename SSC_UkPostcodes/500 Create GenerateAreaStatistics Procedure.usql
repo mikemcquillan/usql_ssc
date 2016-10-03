@@ -1,0 +1,81 @@
+﻿USE DATABASE UkPostcodes;
+USE SCHEMA Postcodes;
+
+DROP PROCEDURE IF EXISTS GenerateAreaStatistics;
+
+CREATE PROCEDURE IF NOT EXISTS GenerateAreaStatistics(@NoRowsRequired int = 0, @TargetCounty string = null)
+AS
+BEGIN;
+    
+    DECLARE @NoRowsToReturn int = @NoRowsRequired <= 0 ? 1000000 : @NoRowsRequired;
+
+    DROP TABLE IF EXISTS AreaStatistics;
+
+    CREATE TABLE IF NOT EXISTS AreaStatistics
+    (
+        CountyName string,
+        DistrictName string,
+        NoMales Int64?,
+        NoFemales Int64?,
+        NoOccupiedHouseholds Int64?,
+        //TotalNoPeople AS (NoMales + NoFemales),   // TODO - calculated column
+        INDEX idx_TableStats // @TableName 
+        CLUSTERED(CountyName, DistrictName)
+        PARTITIONED BY
+        HASH(CountyName)
+    );
+
+    @basedata =
+        SELECT c.CountyName,
+               d.DistrictName,
+               pe.Males,
+               pe.Females,
+               pe.OccupiedHouseholds
+        FROM Postcodes AS p
+             INNER JOIN
+                 Counties AS c
+             ON p.CountyCode == c.CountyCode
+             INNER JOIN
+                 Districts AS d
+             ON p.DistrictCode == d.DistrictCode
+             INNER JOIN
+                 PostcodeEstimates AS pe
+             ON p.Postcode == pe.Postcode;
+
+    @calculateddata =
+        SELECT CountyName,
+               DistrictName,
+               SUM(Males) AS NoMales,
+               SUM(Females) AS NoFemales,
+               SUM(OccupiedHouseholds) AS NoOccupiedHouseholds,
+               SUM(Males) + SUM(Females) AS TotalNoPeople
+        FROM @basedata
+        WHERE (CountyName == @TargetCounty OR @TargetCounty IS NULL)
+        GROUP BY CountyName,
+                 DistrictName
+ORDER BY CountyName,
+         DistrictName
+FETCH FIRST @NoRowsRequired ROWS;
+
+OUTPUT @calculateddata
+TO "/outputs/statistics.csv"
+ORDER BY CountyName ASC, DistrictName ASC
+USING Outputters.Csv();
+
+// Insert data into table (dynamic table?)
+INSERT INTO AreaStatistics
+(
+ CountyName,
+ DistrictName,
+ NoMales,
+ NoFemales,
+ NoOccupiedHouseholds
+)
+SELECT CountyName,
+       DistrictName,
+       NoMales,
+       NoFemales,
+       TotalNoPeople
+FROM @calculateddata;
+
+END;

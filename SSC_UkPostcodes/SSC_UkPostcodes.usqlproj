@@ -50,6 +50,8 @@
     <Script Include="400 Create PostcodeDetails TVF.usql" />
     <Script Include="410 Select From PostcodeDetailsTvf.usql" />
     <Script Include="420 Create PostcodeDetail Table Type.usql" />
+    <Script Include="500 Create GenerateAreaStatistics Procedure.usql" />
+    <Script Include="510 Execute AreaStatistics.usql" />
     <ScriptCode Include="010 Create UkPostcodes Database.usql.cs">
       <DependentUpon>010 Create UkPostcodes Database.usql</DependentUpon>
     </ScriptCode>
@@ -133,6 +135,12 @@
     </ScriptCode>
     <ScriptCode Include="420 Create PostcodeDetail Table Type.usql.cs">
       <DependentUpon>420 Create PostcodeDetail Table Type.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="500 Create GenerateAreaStatistics Procedure.usql.cs">
+      <DependentUpon>500 Create GenerateAreaStatistics Procedure.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="510 Execute AreaStatistics.usql.cs">
+      <DependentUpon>510 Execute AreaStatistics.usql</DependentUpon>
     </ScriptCode>
   </ItemGroup>
   <ItemGroup>

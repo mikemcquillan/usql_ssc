@@ -1,0 +1,8 @@
+﻿USE DATABASE UkPostcodes;
+USE SCHEMA Postcodes;
+
+GenerateAreaStatistics
+(
+    200,
+    DEFAULT
+);

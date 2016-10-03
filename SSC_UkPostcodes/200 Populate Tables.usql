@@ -4,6 +4,15 @@ USE SCHEMA Postcodes;
 DECLARE @CountyFilePath string = "/ssc_uk_postcodes/counties/england_counties.csv";
 DECLARE @DistrictFilePath string = "/ssc_uk_postcodes/districts/england_districts.csv";
 DECLARE @PostcodeFilePath string = "/ssc_uk_postcodes/postcodes/postcodes.csv";
+DECLARE @EstimatesFilePath1 string = "/ssc_uk_postcodes/postcodeestimates/Postcode_Estimates_1_A_F.csv";
+DECLARE @EstimatesFilePath2 string = "/ssc_uk_postcodes/postcodeestimates/Postcode_Estimates_1_G_L.csv";
+DECLARE @EstimatesFilePath3 string = "/ssc_uk_postcodes/postcodeestimates/Postcode_Estimates_1_M_R.csv";
+DECLARE @EstimatesFilePath4 string = "/ssc_uk_postcodes/postcodeestimates/Postcode_Estimates_1_S_Z.csv";
+
+TRUNCATE TABLE Counties;
+TRUNCATE TABLE Districts;
+TRUNCATE TABLE Postcodes;
+TRUNCATE TABLE PostcodeEstimates;
 
 INSERT INTO Counties (CountyCode, CountyName)
 SELECT CountyCode, CountyName
@@ -33,3 +42,35 @@ SELECT Postcode,
        Longitude 
 FROM (EXTRACT Postcode string, CountyCode string, DistrictCode string, CountryCode string, Latitude decimal?, Longitude decimal? 
         FROM @PostcodeFilePath USING Extractors.Csv()) AS postcodes;
+
+INSERT INTO Postcodes.PostcodeEstimates
+(
+    Postcode, Total, Males, Females, OccupiedHouseholds
+)
+SELECT Postcode, Total, Males, Females, OccupiedHouseholds
+FROM (EXTRACT Postcode string, Total int?, Males int?, Females int?, OccupiedHouseholds int?
+        FROM @EstimatesFilePath1 USING Extractors.Csv()) AS estimates;
+
+INSERT INTO Postcodes.PostcodeEstimates
+(
+    Postcode, Total, Males, Females, OccupiedHouseholds
+)
+SELECT Postcode, Total, Males, Females, OccupiedHouseholds
+FROM (EXTRACT Postcode string, Total int?, Males int?, Females int?, OccupiedHouseholds int?
+        FROM @EstimatesFilePath2 USING Extractors.Csv()) AS estimates;
+
+        INSERT INTO Postcodes.PostcodeEstimates
+(
+    Postcode, Total, Males, Females, OccupiedHouseholds
+)
+SELECT Postcode, Total, Males, Females, OccupiedHouseholds
+FROM (EXTRACT Postcode string, Total int?, Males int?, Females int?, OccupiedHouseholds int?
+        FROM @EstimatesFilePath3 USING Extractors.Csv()) AS estimates;
+
+INSERT INTO Postcodes.PostcodeEstimates
+(
+    Postcode, Total, Males, Females, OccupiedHouseholds
+)
+SELECT Postcode, Total, Males, Females, OccupiedHouseholds
+FROM (EXTRACT Postcode string, Total int?, Males int?, Females int?, OccupiedHouseholds int?
+        FROM @EstimatesFilePath4 USING Extractors.Csv()) AS estimates;
