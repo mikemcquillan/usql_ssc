@@ -18,8 +18,7 @@ BEGIN;
         NoMales Int64?,
         NoFemales Int64?,
         NoOccupiedHouseholds Int64?,
-        //TotalNoPeople AS (NoMales + NoFemales),   // TODO - calculated column
-        INDEX idx_TableStats // @TableName 
+        INDEX idx_TableStats 
         CLUSTERED(CountyName, DistrictName)
         PARTITIONED BY
         HASH(CountyName)
@@ -42,19 +41,17 @@ BEGIN;
                  PostcodeEstimates AS pe
              ON p.Postcode == pe.Postcode;
 
-    @calculateddata =
-        SELECT CountyName,
-               DistrictName,
-               SUM(Males) AS NoMales,
-               SUM(Females) AS NoFemales,
-               SUM(OccupiedHouseholds) AS NoOccupiedHouseholds,
-               SUM(Males) + SUM(Females) AS TotalNoPeople
-        FROM @basedata
+@calculateddata =
+    SELECT CountyName,
+           DistrictName,
+           SUM(Males) AS NoMales,
+           SUM(Females) AS NoFemales,
+           SUM(OccupiedHouseholds) AS NoOccupiedHouseholds,
+           SUM(Males) + SUM(Females) AS TotalNoPeople
+    FROM @basedata
         WHERE (CountyName == @TargetCounty OR @TargetCounty IS NULL)
-        GROUP BY CountyName,
-                 DistrictName
-ORDER BY CountyName,
-         DistrictName
+    GROUP BY CountyName, DistrictName
+    ORDER BY CountyName, DistrictName
 FETCH FIRST @NoRowsRequired ROWS;
 
 OUTPUT @calculateddata
@@ -62,7 +59,7 @@ TO "/outputs/statistics.csv"
 ORDER BY CountyName ASC, DistrictName ASC
 USING Outputters.Csv();
 
-// Insert data into table (dynamic table?)
+// Insert data into table
 INSERT INTO AreaStatistics
 (
  CountyName,
