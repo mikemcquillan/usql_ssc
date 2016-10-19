@@ -1,6 +1,8 @@
 ﻿USE DATABASE UkPostcodes;
 USE SCHEMA Postcodes;
 
+DROP TABLE IF EXISTS Postcodes_Range;
+
 CREATE TABLE IF NOT EXISTS Postcodes_Range 
 ( 
 Postcode string, 
@@ -10,4 +12,4 @@ CountryCode string,
 Latitude decimal?, 
 Longitude decimal?, 
 INDEX idx_Postcodes CLUSTERED(Postcode) 
-PARTITIONED BY RANGE(Latitude, Longitude));
+DISTRIBUTED BY RANGE(Latitude, Longitude));

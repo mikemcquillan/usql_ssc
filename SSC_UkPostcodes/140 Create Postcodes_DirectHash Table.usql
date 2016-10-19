@@ -1,6 +1,8 @@
 ﻿USE DATABASE UkPostcodes;
 USE SCHEMA Postcodes;
 
+DROP TABLE IF EXISTS Postcodes_DirectHash;
+
 CREATE TABLE IF NOT EXISTS Postcodes_DirectHash
 (
  Postcode string,
@@ -12,4 +14,4 @@ CREATE TABLE IF NOT EXISTS Postcodes_DirectHash
  DirectHashValue long,
  INDEX idx_Postcodes 
  CLUSTERED(Postcode)
- PARTITIONED BY DIRECT HASH (DirectHashValue) INTO 5 );
+ DISTRIBUTED BY DIRECT HASH (DirectHashValue) INTO 5);

@@ -52,6 +52,7 @@
     <Script Include="420 Create PostcodeDetail Table Type.usql" />
     <Script Include="500 Create GenerateAreaStatistics Procedure.usql" />
     <Script Include="510 Execute AreaStatistics.usql" />
+    <Script Include="520 Aggregations.usql" />
     <ScriptCode Include="010 Create UkPostcodes Database.usql.cs">
       <DependentUpon>010 Create UkPostcodes Database.usql</DependentUpon>
     </ScriptCode>
@@ -141,6 +142,9 @@
     </ScriptCode>
     <ScriptCode Include="510 Execute AreaStatistics.usql.cs">
       <DependentUpon>510 Execute AreaStatistics.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="520 Aggregations.usql.cs">
+      <DependentUpon>520 Aggregations.usql</DependentUpon>
     </ScriptCode>
   </ItemGroup>
   <ItemGroup>

@@ -7,7 +7,7 @@ CREATE PROCEDURE IF NOT EXISTS GenerateAreaStatistics(@NoRowsRequired int = 0, @
 AS
 BEGIN;
     
-    DECLARE @NoRowsToReturn int = @NoRowsRequired <= 0 ? 1000000 : @NoRowsRequired;
+    DECLARE @NoRowsToReturn int = @NoRowsRequired <= 0 ? 1000000 : @NoRowsRequired ;
 
     DROP TABLE IF EXISTS AreaStatistics;
 
@@ -20,7 +20,7 @@ BEGIN;
         NoOccupiedHouseholds Int64?,
         INDEX idx_TableStats 
         CLUSTERED(CountyName, DistrictName)
-        PARTITIONED BY
+        DISTRIBUTED BY
         HASH(CountyName)
     );
 
@@ -52,7 +52,7 @@ BEGIN;
         WHERE (CountyName == @TargetCounty OR @TargetCounty IS NULL)
     GROUP BY CountyName, DistrictName
     ORDER BY CountyName, DistrictName
-FETCH FIRST @NoRowsRequired ROWS;
+FETCH FIRST @NoRowsToReturn ROWS;
 
 OUTPUT @calculateddata
 TO "/outputs/statistics.csv"

@@ -243,3 +243,5 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+/SSC_UkPostcodes/520 Aggregations.usql.cs
+/SSC_UkPostcodes/520 Aggregations.usql
