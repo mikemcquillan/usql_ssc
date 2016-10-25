@@ -1,9 +1,9 @@
 ﻿USE DATABASE UkPostcodes;
 USE SCHEMA Postcodes;
 
-DECLARE @CountyFilePath string = "/ssc_uk_postcodes/counties/england_counties.csv";
-DECLARE @DistrictFilePath string = "/ssc_uk_postcodes/districts/england_districts.csv";
-DECLARE @PostcodeFilePath string = "/ssc_uk_postcodes/postcodes/postcodes.csv";
+DECLARE @CountyFilePath string = "/ssc_uk_postcodes/counties/England_Counties.csv";
+DECLARE @DistrictFilePath string = "/ssc_uk_postcodes/districts/England_Districts.csv";
+DECLARE @PostcodeFilePath string = "/ssc_uk_postcodes/postcodes/Postcodes.csv";
 DECLARE @EstimatesFilePath1 string = "/ssc_uk_postcodes/postcodeestimates/Postcode_Estimates_1_A_F.csv";
 DECLARE @EstimatesFilePath2 string = "/ssc_uk_postcodes/postcodeestimates/Postcode_Estimates_1_G_L.csv";
 DECLARE @EstimatesFilePath3 string = "/ssc_uk_postcodes/postcodeestimates/Postcode_Estimates_1_M_R.csv";

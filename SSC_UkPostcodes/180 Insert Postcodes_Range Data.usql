@@ -1,7 +1,7 @@
 ﻿USE DATABASE UkPostcodes;
   USE SCHEMA Postcodes;
 
-  DECLARE @DataFilePath string = "/ssc_uk_postcodes/postcodes/postcodes.csv";
+  DECLARE @DataFilePath string = "/ssc_uk_postcodes/postcodes/Postcodes.csv";
 
   INSERT INTO Postcodes_Range 
   ( Postcode, 

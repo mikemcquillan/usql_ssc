@@ -1,5 +1,7 @@
 ﻿USE DATABASE UkPostcodes;
 
+DROP TABLE IF EXISTS Postcodes.Districts;
+
 CREATE TABLE IF NOT EXISTS Postcodes.Districts
 (
 DistrictCode string,
@@ -7,4 +9,4 @@ DistrictName string
 );
 
 CREATE CLUSTERED INDEX idx_Districts ON Postcodes.Districts (DistrictCode)
-PARTITIONED BY HASH (DistrictCode);
+DISTRIBUTED BY HASH (DistrictCode);

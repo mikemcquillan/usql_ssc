@@ -1,6 +1,6 @@
 ﻿USE DATABASE UkPostcodes;
 
-DECLARE @DataFilePath string = "/ssc_uk_postcodes/postcodes/postcodes.csv";
+DECLARE @DataFilePath string = "/ssc_uk_postcodes/postcodes/Postcodes.csv";
 
 @postcodes =
 EXTRACT Postcode string,
