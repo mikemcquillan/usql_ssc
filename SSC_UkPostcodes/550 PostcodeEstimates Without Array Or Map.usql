@@ -1,0 +1,28 @@
+﻿USE DATABASE UkPostcodes;
+USE SCHEMA Postcodes;
+
+@pcodes = SELECT * FROM (VALUES 
+	("L33 5XA"),
+	("L33 5XB"),
+	("L33 5XD"),
+	("L33 5XE"),
+	("L33 5XF"),
+	("M1 1AE"),
+	("M1 1BA"),
+	("M1 1BE"),
+	("M1 1BY"),
+	("M1 1BZ")) AS PC(Postcode);
+
+@pcodeTotals =
+    SELECT	p.Postcode.Substring(0, 1).ToUpper() == "L" ? "Liverpool" : "Manchester" AS City, 
+			p.Postcode,
+			pe.Total
+    FROM @pcodes AS p
+         INNER JOIN
+             PostcodeEstimates AS pe
+         ON p.Postcode == pe.Postcode;
+
+OUTPUT @pcodeTotals
+TO "/outputs/pcodetotals_basic.txt"
+ORDER BY Postcode ASC
+USING Outputters.Csv();

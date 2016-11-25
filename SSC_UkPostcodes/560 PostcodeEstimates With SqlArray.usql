@@ -1,0 +1,28 @@
+﻿USE DATABASE UkPostcodes;
+USE SCHEMA Postcodes;
+
+@pcodes = SELECT * FROM (VALUES 
+	("Liverpool", "L33 5XA,L33 5XB,L33 5XD,L33 5XE,L33 5XF"),
+	("Manchester", "M1 1AE,M1 1BA,M1 1BE,M1 1BY,M1 1BZ")) AS pc(Area, Postcodes);
+
+// Put postcodes into an array
+@pcodesAreaArray =
+    SELECT Area,
+           new SQL.ARRAY<string>(Postcodes.Split(',')) AS Postcodes
+    FROM @pcodes;
+
+@pcodeTotals =
+    SELECT ae.Area,
+           pc.Postcode,
+           pe.Total
+    FROM @pcodesAreaArray AS ae
+         CROSS APPLY 
+             EXPLODE(ae.Postcodes) AS pc(Postcode)
+         INNER JOIN
+             PostcodeEstimates AS pe
+         ON pc.Postcode == pe.Postcode;
+
+OUTPUT @pcodeTotals
+TO "/outputs/pcodetotals_array.txt"
+ORDER BY Postcode ASC
+USING Outputters.Text();

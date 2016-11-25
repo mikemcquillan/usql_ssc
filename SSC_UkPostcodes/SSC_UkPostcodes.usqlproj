@@ -53,6 +53,8 @@
     <Script Include="500 Create GenerateAreaStatistics Procedure.usql" />
     <Script Include="510 Execute AreaStatistics.usql" />
     <Script Include="520 Aggregations.usql" />
+    <Script Include="550 PostcodeEstimates Without Array Or Map.usql" />
+    <Script Include="560 PostcodeEstimates With SqlArray.usql" />
     <ScriptCode Include="010 Create UkPostcodes Database.usql.cs">
       <DependentUpon>010 Create UkPostcodes Database.usql</DependentUpon>
     </ScriptCode>
@@ -145,6 +147,12 @@
     </ScriptCode>
     <ScriptCode Include="520 Aggregations.usql.cs">
       <DependentUpon>520 Aggregations.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="550 PostcodeEstimates Without Array Or Map.usql.cs">
+      <DependentUpon>550 PostcodeEstimates Without Array Or Map.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="560 PostcodeEstimates With SqlArray.usql.cs">
+      <DependentUpon>560 PostcodeEstimates With SqlArray.usql</DependentUpon>
     </ScriptCode>
   </ItemGroup>
   <ItemGroup>

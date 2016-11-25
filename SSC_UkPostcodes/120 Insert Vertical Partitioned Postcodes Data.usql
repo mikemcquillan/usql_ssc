@@ -13,12 +13,12 @@ DECLARE @DataFilePath string = "/ssc_uk_postcodes/postcodes/Postcodes.csv";
   FROM @DataFilePath
   USING Extractors.Csv();
   
-  INSERT INTO Postcodes_VerticalPartitioning
+INSERT INTO Postcodes_VerticalPartitioning
   ON INTEGRITY VIOLATION MOVE TO PARTITION ("UNKNOWN")
-  SELECT Postcode,
-         CountyCode,
-         DistrictCode,
-         CountryCode,
-         Latitude,
-         Longitude
-  FROM @postcodes;
+SELECT Postcode,
+       CountyCode,
+       DistrictCode,
+       CountryCode,
+       Latitude,
+       Longitude
+FROM @postcodes;
