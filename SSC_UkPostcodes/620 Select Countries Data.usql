@@ -1,0 +1,12 @@
+﻿USE DATABASE UkPostcodes;
+USE SCHEMA Postcodes;
+
+@countries =
+    SELECT cy.CountryName,
+           c.CCode AS CountyCode,
+           c.CName AS CountyName
+    FROM Countries AS cy
+         CROSS APPLY
+             EXPLODE(cy.Counties) AS c(CCode, CName);
+			
+OUTPUT @countries TO "/outputs/countries.tsv" USING Outputters.Tsv();

@@ -1,0 +1,37 @@
+﻿USE DATABASE UkPostcodes;
+USE SCHEMA Postcodes;
+
+TRUNCATE TABLE Countries;
+
+@nonEnglishCounties = SELECT * FROM (VALUES ("Northern Ireland", "N10000001"), 
+("Northern Ireland", "N10000002"), ("Northern Ireland", "N10000003"),
+("Wales", "W10000001"), ("Wales", "W10000002"), ("Wales", "W10000003"),
+("Scotland", "S10000001"), ("Scotland", "S10000002"), ("Scotland", "S10000003"), 
+("Scotland", "S10000004"), ("Scotland", "S10000005"), ("Scotland", "S10000006")
+) AS c(CountryName, CountyCode);
+
+// Insert non-English counties
+INSERT INTO Countries
+(
+    CountryName,
+    Counties
+)
+SELECT nec.CountryName,
+       MAP_AGG(c.CountyCode, c.CountyName) AS Counties
+FROM Counties AS c
+INNER JOIN @nonEnglishCounties AS nec ON c.CountyCode == nec.CountyCode
+GROUP BY nec.CountryName;
+
+// Insert English counties
+INSERT INTO Countries
+(
+    CountryName,
+    Counties
+)
+SELECT "England" AS CountryName,
+       MAP_AGG(c.CountyCode, c.CountyName) AS Counties
+FROM Counties AS c
+     LEFT JOIN
+         @nonEnglishCounties AS nec
+     ON c.CountyCode == nec.CountyCode
+WHERE nec.CountyCode IS NULL;

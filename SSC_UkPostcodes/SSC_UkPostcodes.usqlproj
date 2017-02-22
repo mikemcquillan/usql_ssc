@@ -11,7 +11,7 @@
     <Name>SSC_UkPostcodes</Name>
     <RootNamespace>SSC_UkPostcodes</RootNamespace>
     <RuntimeVersion>default</RuntimeVersion>
-    <OutputStreamPath>C:\Users\mikemcquillan\AppData\Local\USQLDataRoot</OutputStreamPath>
+    <OutputStreamPath>C:\Users\mikem\AppData\Local\USQLDataRoot</OutputStreamPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -55,6 +55,9 @@
     <Script Include="520 Aggregations.usql" />
     <Script Include="550 PostcodeEstimates Without Array Or Map.usql" />
     <Script Include="560 PostcodeEstimates With SqlArray.usql" />
+    <Script Include="600 Create Countries Table.usql" />
+    <Script Include="610 Insert Countries Data.usql" />
+    <Script Include="620 Select Countries Data.usql" />
     <ScriptCode Include="010 Create UkPostcodes Database.usql.cs">
       <DependentUpon>010 Create UkPostcodes Database.usql</DependentUpon>
     </ScriptCode>
@@ -153,6 +156,15 @@
     </ScriptCode>
     <ScriptCode Include="560 PostcodeEstimates With SqlArray.usql.cs">
       <DependentUpon>560 PostcodeEstimates With SqlArray.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="600 Create Countries Table.usql.cs">
+      <DependentUpon>600 Create Countries Table.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="610 Insert Countries Data.usql.cs">
+      <DependentUpon>610 Insert Countries Data.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="620 Select Countries Data.usql.cs">
+      <DependentUpon>620 Select Countries Data.usql</DependentUpon>
     </ScriptCode>
   </ItemGroup>
   <ItemGroup>

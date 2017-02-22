@@ -1,0 +1,12 @@
+﻿USE DATABASE UkPostcodes;
+USE SCHEMA Postcodes; 
+ 
+DROP TABLE IF EXISTS Countries;
+
+CREATE TABLE IF NOT EXISTS Countries
+(
+CountryName string,
+Counties SQL.MAP<string, string>,
+INDEX idx_Countries CLUSTERED (CountryName)
+DISTRIBUTED BY HASH (CountryName)
+);
