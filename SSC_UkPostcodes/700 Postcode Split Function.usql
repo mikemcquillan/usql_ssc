@@ -1,0 +1,19 @@
+﻿USE DATABASE UkPostcodes;
+USE SCHEMA Postcodes;
+
+@records =
+    SELECT p.Postcode,
+		   SSC_UkPostcodes.FunctionTests.PostcodePart(p.Postcode, true) AS Part1,
+           SSC_UkPostcodes.FunctionTests.PostcodePart(p.Postcode, false) AS Part2,
+           c.CountyName,
+           d.DistrictName
+    FROM Postcodes AS p
+         LEFT JOIN
+             Counties AS c
+         ON p.CountyCode == c.CountyCode
+         LEFT JOIN
+             Districts AS d
+         ON p.DistrictCode == d.DistrictCode
+    WHERE d.DistrictName == "Fife";
+
+OUTPUT @records TO "/outputs/functiontests.csv" USING Outputters.Csv();
