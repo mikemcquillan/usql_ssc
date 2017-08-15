@@ -1,0 +1,7 @@
+﻿USE DATABASE UkPostcodes;
+
+//DECLARE @Path string = @"C:\Users\mikem\Source\Repos\usql_ssc\PostcodeLibrary\bin\Debug\PostcodeLibrary.dll";
+DECLARE @Path string = @"/assemblies/PostcodeLibrary.dll";
+
+DROP ASSEMBLY IF EXISTS PostcodeLibrary;
+CREATE ASSEMBLY PostcodeLibrary FROM @Path;
