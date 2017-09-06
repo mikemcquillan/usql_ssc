@@ -176,6 +176,7 @@
     </ScriptCode>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="PowerShell" />
     <Folder Include="ssc_uk_postcodes" />
     <Folder Include="ssc_uk_postcodes\counties" />
     <Folder Include="ssc_uk_postcodes\districts" />
@@ -184,6 +185,9 @@
     <Folder Include="ssc_uk_postcodes\postcodes" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="PowerShell\Create-UkPostcodesDatabase.psm1">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="ssc_uk_postcodes\counties\England_Counties.csv">
       <SubType>Content</SubType>
     </Content>
