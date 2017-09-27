@@ -188,6 +188,9 @@
     <Content Include="PowerShell\Create-UkPostcodesDatabase.psm1">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="PowerShell\DataLake_FileManagement.psm1">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="ssc_uk_postcodes\counties\England_Counties.csv">
       <SubType>Content</SubType>
     </Content>
