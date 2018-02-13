@@ -188,6 +188,9 @@
     <Content Include="PowerShell\Create-UkPostcodesDatabase.psm1">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="PowerShell\DataLake-Metadata.psm1">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="PowerShell\DataLake_FileManagement.psm1">
       <SubType>Content</SubType>
     </Content>
