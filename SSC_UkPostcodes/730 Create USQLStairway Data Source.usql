@@ -1,0 +1,10 @@
+﻿USE DATABASE UkPostcodes;
+
+CREATE DATA SOURCE IF NOT EXISTS UsqlStairwayAzureSqlDataSource
+FROM AZURESQLDB
+WITH
+(
+    PROVIDER_STRING = "Database=NationalData;Trusted_Connection=False;Encrypt=True;TrustServerCertificate=True",
+    CREDENTIAL = SqlNationalDataCreds,
+    REMOTABLE_TYPES = (bool, byte, DateTime, decimal, double, float, int, long, sbyte, short, string, uint, ulong, ushort)
+);

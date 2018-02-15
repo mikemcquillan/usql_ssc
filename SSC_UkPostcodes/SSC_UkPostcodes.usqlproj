@@ -60,6 +60,10 @@
     <Script Include="700 Postcode Split Function.usql" />
     <Script Include="710 Register PostcodeHelper Assembly.usql" />
     <Script Include="720 Reference PostcodeLibrary Assembly.usql" />
+    <Script Include="730 Create USQLStairway Data Source.usql" />
+    <Script Include="740 Direct External Data Source Query.usql" />
+    <Script Include="750 Create External Table.usql" />
+    <Script Include="760 External Table Query.usql" />
     <ScriptCode Include="010 Create UkPostcodes Database.usql.cs">
       <DependentUpon>010 Create UkPostcodes Database.usql</DependentUpon>
     </ScriptCode>
@@ -173,6 +177,18 @@
     </ScriptCode>
     <ScriptCode Include="720 Reference PostcodeLibrary Assembly.usql.cs">
       <DependentUpon>720 Reference PostcodeLibrary Assembly.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="730 Create USQLStairway Data Source.usql.cs">
+      <DependentUpon>730 Create USQLStairway Data Source.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="740 Direct External Data Source Query.usql.cs">
+      <DependentUpon>740 Direct External Data Source Query.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="750 Create External Table.usql.cs">
+      <DependentUpon>750 Create External Table.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="760 External Table Query.usql.cs">
+      <DependentUpon>760 External Table Query.usql</DependentUpon>
     </ScriptCode>
   </ItemGroup>
   <ItemGroup>

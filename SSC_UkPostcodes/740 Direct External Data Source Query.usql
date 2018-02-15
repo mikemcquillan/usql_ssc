@@ -1,0 +1,15 @@
+﻿USE DATABASE UkPostcodes;
+
+@results =
+    SELECT c.CountyCode,
+           c.CountyName,
+           u.AbbreviatedName,
+           u.NumberOfFootballTeams
+    FROM EXTERNAL UsqlStairwayAzureSqlDataSource LOCATION "dbo.county" AS u
+         INNER JOIN
+             Postcodes.Counties AS c
+         ON u.CountyCode == c.CountyCode;
+
+OUTPUT @results
+TO "/Output/countydetails.csv"
+USING Outputters.Csv(outputHeader: true);

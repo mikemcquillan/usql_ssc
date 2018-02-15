@@ -1,0 +1,20 @@
+﻿USE DATABASE UkPostcodes;
+
+@results =
+    SELECT c.CountyCode,
+           c.CountyName,
+           u.AbbreviatedName,
+           u.NumberOfFootballTeams,
+           u.AreaKMSquared,
+           u.Population1991,
+           u.Population2001,
+           u.Population2011,
+           u.Population2016
+    FROM Postcodes.ExternalCountyData AS u
+         INNER JOIN
+             Postcodes.Counties AS c
+         ON u.CountyCode == c.CountyCode;
+
+OUTPUT @results
+TO "/Output/countydetails.csv"
+USING Outputters.Csv(outputHeader: true);

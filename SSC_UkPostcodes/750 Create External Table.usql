@@ -1,0 +1,16 @@
+﻿USE DATABASE UkPostcodes;
+USE SCHEMA Postcodes;
+
+CREATE EXTERNAL TABLE IF NOT EXISTS Postcodes.ExternalCountyData
+(
+    CountyCode string,
+    CountyName string,
+    NumberOfFootballTeams int?,
+    AbbreviatedName string,
+    AreaKMSquared int?,
+    Population1991 int?,
+    Population2001 int?,
+    Population2011 int?,
+    Population2016 int?
+)
+FROM UsqlStairwayAzureSqlDataSource LOCATION "dbo.County";
