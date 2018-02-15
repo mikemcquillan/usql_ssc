@@ -64,6 +64,7 @@
     <Script Include="740 Direct External Data Source Query.usql" />
     <Script Include="750 Create External Table.usql" />
     <Script Include="760 External Table Query.usql" />
+    <Script Include="T-SQL Scripts\Create County Table and Data.sql" />
     <ScriptCode Include="010 Create UkPostcodes Database.usql.cs">
       <DependentUpon>010 Create UkPostcodes Database.usql</DependentUpon>
     </ScriptCode>
@@ -192,6 +193,7 @@
     </ScriptCode>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="T-SQL Scripts" />
     <Folder Include="PowerShell" />
     <Folder Include="ssc_uk_postcodes" />
     <Folder Include="ssc_uk_postcodes\counties" />
