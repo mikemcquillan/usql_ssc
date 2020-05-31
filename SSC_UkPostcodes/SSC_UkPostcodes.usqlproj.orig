@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>1a0ef1f3-8105-429e-aa74-c80421af3459</ProjectGuid>
+    <OutputType>File</OutputType>
+    <AssemblyName>Algebra.xml</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <Name>SSC_UkPostcodes</Name>
+    <RootNamespace>SSC_UkPostcodes</RootNamespace>
+    <RuntimeVersion>default</RuntimeVersion>
+    <OutputStreamPath>C:\Users\mikem\AppData\Local\USQLDataRoot</OutputStreamPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Script Include="010 Create UkPostcodes Database.usql" />
+    <Script Include="020 Create Postcodes Schema.usql" />
+    <Script Include="030 Create Counties Table.usql" />
+    <Script Include="040 Create Districts Table.usql" />
+    <Script Include="050 Create PostcodeEstimates Table.usql" />
+    <Script Include="060 Create Postcodes Table.usql" />
+    <Script Include="070 Extract Knowsley Data.usql" />
+    <Script Include="080 Create Partitioned Postcodes_DistrictCode Table.usql" />
+    <Script Include="090 Insert Postcode_DistrictCode Data.usql" />
+    <Script Include="100 Extract Knowsley Postcode Data.usql" />
+    <Script Include="110 Create Vertical Partitioned Postcodes Table.usql" />
+    <Script Include="120 Insert Vertical Partitioned Postcodes Data.usql" />
+    <Script Include="130 Extract Vertical Partitioned Postcodes Data.usql" />
+    <Script Include="150 Insert Postcodes_DirectHash Data.usql" />
+    <Script Include="140 Create Postcodes_DirectHash Table.usql" />
+    <Script Include="160 Extract Postcodes_DirectHash Data.usql" />
+    <Script Include="170 Create Postcodes_Range Table.usql" />
+    <Script Include="180 Insert Postcodes_Range Data.usql" />
+    <Script Include="190 Extract Postcodes_Range Data.usql" />
+    <Script Include="200 Populate Tables.usql" />
+    <Script Include="210 Join Example.usql" />
+    <Script Include="300 Create PostcodeDetails View.usql" />
+    <Script Include="310 Select From PostcodeDetails View.usql" />
+    <Script Include="320 Create Counties File View.usql" />
+    <Script Include="330 Select From Counties File View.usql" />
+    <Script Include="400 Create PostcodeDetails TVF.usql" />
+    <Script Include="410 Select From PostcodeDetailsTvf.usql" />
+    <Script Include="420 Create PostcodeDetail Table Type.usql" />
+    <Script Include="500 Create GenerateAreaStatistics Procedure.usql" />
+    <Script Include="510 Execute AreaStatistics.usql" />
+    <Script Include="550 PostcodeEstimates Without Array Or Map.usql" />
+    <Script Include="560 PostcodeEstimates With SqlArray.usql" />
+    <Script Include="600 Create Countries Table.usql" />
+    <Script Include="610 Insert Countries Data.usql" />
+    <Script Include="620 Select Countries Data.usql" />
+    <Script Include="700 Postcode Split Function.usql" />
+    <Script Include="710 Register PostcodeHelper Assembly.usql" />
+    <Script Include="720 Reference PostcodeLibrary Assembly.usql" />
+    <Script Include="730 Create USQLStairway Data Source.usql" />
+    <Script Include="740 Direct External Data Source Query.usql" />
+    <Script Include="750 Create External Table.usql" />
+    <Script Include="760 External Table Query.usql" />
+    <Script Include="T-SQL Scripts\Create County Table and Data.sql" />
+    <ScriptCode Include="010 Create UkPostcodes Database.usql.cs">
+      <DependentUpon>010 Create UkPostcodes Database.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="020 Create Postcodes Schema.usql.cs">
+      <DependentUpon>020 Create Postcodes Schema.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="030 Create Counties Table.usql.cs">
+      <DependentUpon>030 Create Counties Table.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="040 Create Districts Table.usql.cs">
+      <DependentUpon>040 Create Districts Table.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="050 Create PostcodeEstimates Table.usql.cs">
+      <DependentUpon>050 Create PostcodeEstimates Table.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="060 Create Postcodes Table.usql.cs">
+      <DependentUpon>060 Create Postcodes Table.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="070 Extract Knowsley Data.usql.cs">
+      <DependentUpon>070 Extract Knowsley Data.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="080 Create Partitioned Postcodes_DistrictCode Table.usql.cs">
+      <DependentUpon>080 Create Partitioned Postcodes_DistrictCode Table.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="090 Insert Postcode_DistrictCode Data.usql.cs">
+      <DependentUpon>090 Insert Postcode_DistrictCode Data.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="100 Extract Knowsley Postcode Data.usql.cs">
+      <DependentUpon>100 Extract Knowsley Postcode Data.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="110 Create Vertical Partitioned Postcodes Table.usql.cs">
+      <DependentUpon>110 Create Vertical Partitioned Postcodes Table.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="120 Insert Vertical Partitioned Postcodes Data.usql.cs">
+      <DependentUpon>120 Insert Vertical Partitioned Postcodes Data.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="130 Extract Vertical Partitioned Postcodes Data.usql.cs">
+      <DependentUpon>130 Extract Vertical Partitioned Postcodes Data.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="150 Insert Postcodes_DirectHash Data.usql.cs">
+      <DependentUpon>150 Insert Postcodes_DirectHash Data.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="140 Create Postcodes_DirectHash Table.usql.cs">
+      <DependentUpon>140 Create Postcodes_DirectHash Table.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="160 Extract Postcodes_DirectHash Data.usql.cs">
+      <DependentUpon>160 Extract Postcodes_DirectHash Data.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="170 Create Postcodes_Range Table.usql.cs">
+      <DependentUpon>170 Create Postcodes_Range Table.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="180 Insert Postcodes_Range Data.usql.cs">
+      <DependentUpon>180 Insert Postcodes_Range Data.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="190 Extract Postcodes_Range Data.usql.cs">
+      <DependentUpon>190 Extract Postcodes_Range Data.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="200 Populate Tables.usql.cs">
+      <DependentUpon>200 Populate Tables.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="210 Join Example.usql.cs">
+      <DependentUpon>210 Join Example.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="300 Create PostcodeDetails View.usql.cs">
+      <DependentUpon>300 Create PostcodeDetails View.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="310 Select From PostcodeDetails View.usql.cs">
+      <DependentUpon>310 Select From PostcodeDetails View.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="320 Create Counties File View.usql.cs">
+      <DependentUpon>320 Create Counties File View.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="330 Select From Counties File View.usql.cs">
+      <DependentUpon>330 Select From Counties File View.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="400 Create PostcodeDetails TVF.usql.cs">
+      <DependentUpon>400 Create PostcodeDetails TVF.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="410 Select From PostcodeDetailsTvf.usql.cs">
+      <DependentUpon>410 Select From PostcodeDetailsTvf.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="420 Create PostcodeDetail Table Type.usql.cs">
+      <DependentUpon>420 Create PostcodeDetail Table Type.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="500 Create GenerateAreaStatistics Procedure.usql.cs">
+      <DependentUpon>500 Create GenerateAreaStatistics Procedure.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="510 Execute AreaStatistics.usql.cs">
+      <DependentUpon>510 Execute AreaStatistics.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="550 PostcodeEstimates Without Array Or Map.usql.cs">
+      <DependentUpon>550 PostcodeEstimates Without Array Or Map.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="560 PostcodeEstimates With SqlArray.usql.cs">
+      <DependentUpon>560 PostcodeEstimates With SqlArray.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="600 Create Countries Table.usql.cs">
+      <DependentUpon>600 Create Countries Table.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="610 Insert Countries Data.usql.cs">
+      <DependentUpon>610 Insert Countries Data.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="620 Select Countries Data.usql.cs">
+      <DependentUpon>620 Select Countries Data.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="700 Postcode Split Function.usql.cs">
+      <DependentUpon>700 Postcode Split Function.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="710 Register PostcodeHelper Assembly.usql.cs">
+      <DependentUpon>710 Register PostcodeHelper Assembly.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="720 Reference PostcodeLibrary Assembly.usql.cs">
+      <DependentUpon>720 Reference PostcodeLibrary Assembly.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="730 Create USQLStairway Data Source.usql.cs">
+      <DependentUpon>730 Create USQLStairway Data Source.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="740 Direct External Data Source Query.usql.cs">
+      <DependentUpon>740 Direct External Data Source Query.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="750 Create External Table.usql.cs">
+      <DependentUpon>750 Create External Table.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="760 External Table Query.usql.cs">
+      <DependentUpon>760 External Table Query.usql</DependentUpon>
+    </ScriptCode>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="T-SQL Scripts" />
+    <Folder Include="PowerShell" />
+    <Folder Include="ssc_uk_postcodes" />
+    <Folder Include="ssc_uk_postcodes\counties" />
+    <Folder Include="ssc_uk_postcodes\districts" />
+    <Folder Include="ssc_uk_postcodes\pluralsight" />
+    <Folder Include="ssc_uk_postcodes\postcodeestimates" />
+    <Folder Include="ssc_uk_postcodes\postcodes" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="PowerShell\Create-UkPostcodesDatabase.psm1">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="PowerShell\DataLake-Metadata.psm1">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="PowerShell\DataLake_FileManagement.psm1">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ssc_uk_postcodes\counties\England_Counties.csv">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ssc_uk_postcodes\districts\England_Districts.csv">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ssc_uk_postcodes\pluralsight\PlPostcodes.csv">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ssc_uk_postcodes\postcodeestimates\Postcode_Estimates_1_A_F.csv">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ssc_uk_postcodes\postcodeestimates\Postcode_Estimates_1_G_L.csv">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ssc_uk_postcodes\postcodeestimates\Postcode_Estimates_1_M_R.csv">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ssc_uk_postcodes\postcodeestimates\Postcode_Estimates_1_S_Z.csv">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ssc_uk_postcodes\postcodes\Postcodes.csv">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(AppData)\Microsoft\DataLake\MsBuild\1.0\Usql.targets" />
+</Project>

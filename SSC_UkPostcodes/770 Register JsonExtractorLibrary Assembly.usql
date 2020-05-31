@@ -1,0 +1,10 @@
+﻿USE DATABASE UkPostcodes;
+
+DECLARE @Path string = @"/assemblies/JsonExtractorLibrary.dll";
+
+DROP ASSEMBLY IF EXISTS JsonExtractorLibrary;
+CREATE ASSEMBLY JsonExtractorLibrary
+FROM @Path
+	WITH ADDITIONAL_FILES = 
+		(@"/assemblies/Newtonsoft.Json.dll");
+

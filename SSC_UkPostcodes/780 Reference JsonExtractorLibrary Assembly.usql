@@ -1,0 +1,19 @@
+﻿USE DATABASE UkPostcodes;
+USE SCHEMA Postcodes;
+
+REFERENCE ASSEMBLY [JsonExtractorLibrary];
+
+DECLARE @DataFilePath string = "/ssc_uk_postcodes/postcodes/Postcodes.json";
+
+@postcodes =
+    EXTRACT Postcode string,
+            CountyCode string,
+            DistrictCode string,
+            CountryCode string,
+            Latitude decimal?,
+            Longitude decimal?
+    FROM @DataFilePath
+    USING new JsonExtractorLibrary.JsonExtractor();
+
+OUTPUT @postcodes TO "/Output/convertedjsonpostcodes.csv"
+USING Outputters.Csv();
